@@ -1,11 +1,10 @@
-import './App.css';
+import React from 'react'
+import Body from './Components/Body'
 
-function App() {
+const App = () => {
   return (
-    <div className="font-bold italic">
-      hello
-    </div>
-  );
+    <Body/>
+  )
 }
 
-export default App;
+export default App
