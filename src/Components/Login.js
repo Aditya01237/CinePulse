@@ -1,29 +1,74 @@
 import React, { useRef } from "react";
 import { useState } from "react";
 import { checkValidData } from "../utills/Validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utills/firebase";
 
 const Login = () => {
   const [signIn, setsignIn] = useState(true);
   const [seePassword, setseePassword] = useState(false);
   const [errorMessage, seterrorMessage] = useState();
 
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
   const handleClick = () => {
     setsignIn(!signIn);
   };
   const HandlePassword = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setseePassword(!seePassword);
   };
   const handleSubmitForm = (e) => {
-    e.preventDefault()
-    const message = checkValidData(name.current.value,email.current.value,password.current.value)
-    seterrorMessage(message)
-    console.log(message)
-  }
-
-  const name = useRef(null);
-  const email = useRef(null);
-  const password = useRef(null);
+    e.preventDefault();
+    const message = checkValidData(
+      email.current.value,
+      password.current.value
+    );
+    seterrorMessage(message);
+    if (message) return;
+    if (!signIn) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          seterrorMessage(errorCode + " " + errorMessage);
+          // ..
+        });
+    } else {
+      console.log("1");
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          seterrorMessage(errorCode + " " + errorMessage);
+        });
+    }
+  };
 
   return (
     <div>
@@ -52,7 +97,7 @@ const Login = () => {
           </h1>
           {!signIn && (
             <input
-            ref = {name}
+              ref={name}
               className="py-4 px-4 my-2 bg-black  placeholder-gray-300  bg-opacity-50 rounded-md border-2 border-white border-opacity-50 "
               type="text"
               placeholder="Full Name"
@@ -61,7 +106,7 @@ const Login = () => {
             />
           )}
           <input
-          ref = {email}
+            ref={email}
             className="py-4 px-4 my-2 bg-black  placeholder-gray-300  bg-opacity-50 rounded-md border-2 border-white border-opacity-50 "
             type="text"
             placeholder="Email or mobile number"
@@ -70,23 +115,31 @@ const Login = () => {
           />
           <div className="flex w-full justify-between">
             <input
-            ref = {password}
+              ref={password}
               className="py-4 px-4 my-2 w-full bg-black  placeholder-gray-300   bg-opacity-50 rounded-tl-md rounded-bl-md border-r-0  border-2 border-white border-opacity-50 focus:outline-none "
               type={seePassword ? "text" : "password"}
               placeholder="Password"
               name=""
               id=""
             />
-            <button className="bg-opacity-50 bg-black py-4 px-8  my-2 w-10 rounded-tr-md rounded-br-md border-l-0 border-2 border-white border-opacity-50 focus:outline-none" onClick={HandlePassword} >
+            <button
+              className="bg-opacity-50 bg-black py-4 px-8  my-2 w-10 rounded-tr-md rounded-br-md border-l-0 border-2 border-white border-opacity-50 focus:outline-none"
+              onClick={HandlePassword}
+            >
               {seePassword ? "🙂" : "🫣"}
             </button>
           </div>
           <h1 className="text-red-500 text-lg ">{errorMessage}</h1>
-          <button className="py-4 my-6 w-full bg-red-600 rounded-md" onClick={handleSubmitForm} >
+          <button
+            className="py-4 my-6 w-full bg-red-600 rounded-md"
+            onClick={handleSubmitForm}
+          >
             {signIn ? "Sign In" : "Sign Up"}
           </button>
           <div className="flex ">
-            <h1 className="">{signIn ? "New to Netflix?" : "Already Registered?"}</h1>
+            <h1 className="">
+              {signIn ? "New to Netflix?" : "Already Registered?"}
+            </h1>
             <h1
               className="font-bold ml-1 cursor-pointer "
               onClick={handleClick}
