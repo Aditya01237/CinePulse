@@ -21,8 +21,9 @@ const MainPage = () => {
 
       {/* Centered Content */}
       <div className="absolute inset-0 flex items-center justify-center text-white z-10 flex-col">
-        <h1 className="animate-fade-up animate-once animate-ease-in text-6xl font-bold mb-10">Welcome to Netflix GPT</h1>
+        <h1 className="animate-fade-up animate-once animate-ease-in text-6xl font-bold mb-10">Welcome to CINEPULSE GPT</h1>
         <h1 className="animate-fade-up animate-once animate-ease-in text-4xl font-bold">Unlimited movies, TV shows, and more</h1>
+        <h1 className="animate-fade-up animate-once animate-ease-in text-xl font-bold mt-4">Powered by AI</h1>
       </div>
     </div>
   );
