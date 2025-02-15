@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from './Header';
+import HeaderLogin from './HeaderLogin';
 
 const MainPage = () => {
   return (
     <div className="h-screen w-screen relative"> {/* Ensure relative positioning */}
       {/* Header with z-index to keep it clickable */}
       <div className="relative z-20"> {/* Increased z-index */}
-        <Header />
+        <HeaderLogin />
       </div>
 
       {/* Background Image with Gradient */}

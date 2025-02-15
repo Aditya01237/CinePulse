@@ -4,12 +4,17 @@ import { checkValidData } from "../utills/Validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword,} from "firebase/auth";
 import { auth } from "../utills/firebase";
 import logo from "../images/Logo.png"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utills/userSlice";
 
 const Login = () => {
   const [signIn, setsignIn] = useState(true);
   const [seePassword, setseePassword] = useState(false);
   const [errorMessage, seterrorMessage] = useState();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const name = useRef(null);
   const email = useRef(null);
@@ -40,7 +45,15 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log(user);
-          // ...
+          updateProfile(auth.currentUser, {
+            displayName:  name.current.value,
+          }).then(() => {
+            const {uid,email,displayName} = auth.currentUser;
+          dispatch(addUser({uid:uid , email:email , displayName:displayName}));
+            navigate("/browser")
+          }).catch((error) => {
+            seterrorMessage(error.message)
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -59,6 +72,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          navigate("/browser")
           // ...
         })
         .catch((error) => {

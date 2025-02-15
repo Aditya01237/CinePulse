@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom"; // ✅ Correct import
 import logo from "../images/Logo.png"
 
-const Header = () => {
+const HeaderLogin = () => {
   return (
     <div className="absolute w-full px-8 py-4">
       <div className="flex justify-between mx-72  items-center">
@@ -25,4 +25,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderLogin;
