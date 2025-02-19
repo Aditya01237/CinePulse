@@ -3,6 +3,7 @@ import HeaderMain from "../Components/HeaderMain"
 
 
 const Browser = () => {
+  
   return (
     <div>
       <HeaderMain/>
