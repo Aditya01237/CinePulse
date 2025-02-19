@@ -36,8 +36,8 @@ const HeaderMain = () => {
   }, []);
 
   return (
-    <div className="absolute w-full px-8 py-4 bg-gradient-to-b from-black">
-      <div className="flex justify-between mx-72  items-center">
+    <div className="absolute w-full px-8 py-4 bg-gradient-to-b from-black/50">
+      <div className={`flex ${user ? 'justify-between mx-10' : 'justify-evenly'} items-center`}>
         {/* Netflix Logo */}
         <img className="w-48 " src={logo} alt="Netflix Logo" />
 
@@ -54,7 +54,7 @@ const HeaderMain = () => {
               Sign Out
             </button>
             <p className="px-4 py-2 text-white text-xl font-semibold ">
-              {user.displayName}
+              { user.displayName}
             </p>
           </div>
         ) : (
