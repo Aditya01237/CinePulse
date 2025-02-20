@@ -44,7 +44,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
           updateProfile(auth.currentUser, {
             displayName:  name.current.value,
           }).then(() => {
@@ -61,7 +60,6 @@ const Login = () => {
           // ..
         });
     } else {
-      console.log("1");
       signInWithEmailAndPassword(
         auth,
         email.current.value,
