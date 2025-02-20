@@ -67,7 +67,7 @@ Contributions are welcome! Feel free to submit issues, feature requests, or pull
 ---
 
 ## 📩 Contact
-For any queries, reach out at: [your-email@example.com](mailto:pareekaditya01@gmail.com)
+For any queries, reach out at: [pareekaditya01@gmail.com](mailto:pareekaditya01@gmail.com)
 
 ---
 
