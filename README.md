@@ -50,9 +50,6 @@ User authentication powered by Firebase ensures secure login and account managem
 ### 🎥 Movie Details
 ![Movie Details](./assets/movie-details.png)
 
-### 🎥 AI Chatbot
-![AI Chatbot](./assets/ai-chatbot.png)
-
 ---
 
 ## 📌 Future Enhancements
@@ -70,7 +67,7 @@ Contributions are welcome! Feel free to submit issues, feature requests, or pull
 ---
 
 ## 📩 Contact
-For any queries, reach out at: [your-email@example.com](mailto:your-email@example.com)
+For any queries, reach out at: [pareekaditya01@gmail.com](mailto:pareekaditya01@gmail.com)
 
 ---
 
