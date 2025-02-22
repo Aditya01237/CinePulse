@@ -80,12 +80,13 @@ const Login = () => {
 
   return (
     <div>
-      <div className="relative z-10 my-4 mx-10">
+      <div className="relative z-10 my-4 mx-20 flex justify-between ">
         <Link to={"/"} ><img
           className="w-48"
           src={logo}
           alt="Netflix Logo"
         /></Link>
+        <h1 className="text-white text-xl  ">id: adi04@gmail.com Pass: aditya1234</h1>
       </div>
       <div className="absolute inset-0 ">
         {" "}
