@@ -7,3 +7,6 @@ export const Api_Options = {
   };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500"
+
+
+export const Open_AI_Key = "f5ae4f62223242049803865d91393d36"

@@ -3,6 +3,7 @@ import Login from './Login'
 import Browser from './Browser'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import MainPage from './MainPage'
+import GptMainPage from './GptMainPage'
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -18,6 +19,10 @@ const Body = () => {
       path:"/browser",
       element: <Browser/>
     },
+    {
+      path:"gptsearch",
+      element:<GptMainPage/>
+    }
   ]);
 
   return (

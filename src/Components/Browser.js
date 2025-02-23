@@ -6,8 +6,12 @@ import SecondaryContainer from "./SecondaryContainer";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
+import { useSelector } from "react-redux";
+import GptMainPage from "./GptMainPage";
 
 const Browser = () => {
+  const gpt = useSelector((store) => store.gpt.gptPage);
+  console.log(gpt.gptPage);
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
@@ -17,8 +21,14 @@ const Browser = () => {
       <div className="relative z-20 ">
         <HeaderMain />
       </div>
-      <MainContainer />
-      <SecondaryContainer />
+      {gpt ? (
+        <GptMainPage />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </div>
   );
 };
