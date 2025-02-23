@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { OpenAI } from 'openai'; // Use ES6 import
+import { Api_Options } from '../utills/constants';
 
 const GptSearchBar = () => {
   const [userPrompt, setUserPrompt] = useState(''); // State for user input
   const [response, setResponse] = useState(''); // State for API response
   const [isLoading, setIsLoading] = useState(false); // State for loading indicator
+  const [movies, setmovies] = useState();
 
   const baseURL = "https://api.aimlapi.com/v1";
   const apiKey = "f5ae4f62223242049803865d91393d36"; // Replace with your actual API key
-  const systemPrompt = "just give me movies name with semicoln no extra things";
+  const systemPrompt = "just give me movies name with semicoln no extra things just only movies name";
 
   const api = new OpenAI({
     apiKey,
@@ -41,8 +43,11 @@ const GptSearchBar = () => {
       });
 
       const response = completion.choices[0].message.content;
-      const movies = response.split(/[;,]/).map(movie => movie.trim());
-      console.log(movies)
+      const moviesNames = response.split(/[;,]/).map(movie => movie.trim());
+      const movieList = fetch('https://api.themoviedb.org/3/search/movie?query=3%20Idiots&include_adult=false&language=en-US&page=1', Api_Options)
+      const data = (await movieList).json()
+      console.log(moviesNames)
+      console.log(data)
       setResponse(response); // Set the API response
     } catch (error) {
       console.error('Error fetching response:', error);
