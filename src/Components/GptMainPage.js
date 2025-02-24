@@ -1,7 +1,10 @@
 import React from "react";
 import GptSearchBar from "./GptSearchBar";
+import { useSelector } from "react-redux";
+import MovieList from "./MovieList";
 
 const GptMainPage = () => {
+  const gpt = useSelector(store => store.gpt)
   return (
     <div className="relative h-screen"> {/* Added z-index for layering */}
       <img
@@ -13,6 +16,13 @@ const GptMainPage = () => {
       <div className=" relative z-20 ">
       <GptSearchBar /> 
       </div>
+      <div className="bg-black">
+      {gpt?.gptMovies && (
+        <div className="z-20 relative px-12 ">
+        <MovieList title={"Your Search"} movies={gpt?.gptMovies} />
+        </div>
+      )}
+    </div>
     </div>
   );
 };

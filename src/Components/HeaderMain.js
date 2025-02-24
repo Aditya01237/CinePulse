@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utills/userSlice";
-import { showGptPage } from "../utills/gptSlice";
 
 const HeaderMain = () => {
   const navigate = useNavigate();
@@ -22,10 +21,6 @@ const HeaderMain = () => {
         // An error happened.
       });
   };
-
-  const handleAskGptAI = () => {
-    dispatch(showGptPage())
-  }
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -49,11 +44,11 @@ const HeaderMain = () => {
         {/* Buttons */}
         {user ? (
           <div className="space-x-4 flex items-center">
-            {/* <Link to={"/gptsearch"}>
+            <Link to={"/gptsearch"}>
             <button className="px-4 py-2 text-white bg-gray-700 hover:bg-gray-800 rounded-md">
               Ask AI
             </button>
-            </Link> */}
+            </Link>
             <button
               className="px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded-md "
               onClick={HandleSignOut}

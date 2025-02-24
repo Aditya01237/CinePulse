@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
   const containerRef = useRef(null);
-
+  console.log(movies)
   const scrollRight = () => {
     if (containerRef.current) {
       containerRef.current.scrollBy({
