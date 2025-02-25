@@ -1,19 +1,15 @@
-import React from 'react'
-import { Api_Options, IMG_CDN_URL } from '../utills/constants'
+import React from "react";
+import { IMG_CDN_URL } from "../utills/constants";
+import { Link } from "react-router-dom";
 
-const MovieCard = ({posterPath,movieData}) =>  {
-  
-  const showData = async () => {
-    console.log(movieData)
-    const data = await fetch("https://api.themoviedb.org/3/movie/"+ movieData.id +"?language=en-US", Api_Options)
-    const movieDetails = await data.json()
-    console.log(movieDetails)
-  }
+const MovieCard = ({ posterPath, movieData }) => {
   return (
-    <div className="w-52 p-3 hover:opacity-50 cursor-pointer ">
-        <img onClick={showData} src={IMG_CDN_URL + posterPath} alt="" />
-    </div>
-  )
-}
+    <Link to={"/movie/" + movieData.id}>
+      <div className="w-52 p-3 hover:opacity-50 cursor-pointer ">
+        <img src={IMG_CDN_URL + posterPath} alt="" />
+      </div>
+    </Link>
+  );
+};
 
-export default MovieCard
+export default MovieCard;
