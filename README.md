@@ -2,7 +2,7 @@
 
 ![CinePulse Banner](./assets/cinepulse-banner.png)
 ## 🔗 Live Demo
-Check out the live version of the project here:  
+
 👉 [CinePulse](https://netflixgpt-d305b.web.app)
 
 ## 🎬 About CinePulse
