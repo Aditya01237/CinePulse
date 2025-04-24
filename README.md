@@ -1,6 +1,9 @@
 # CinePulse - A Next-Gen Streaming Experience
 
 ![CinePulse Banner](./assets/cinepulse-banner.png)
+## 🔗 Live Demo
+Check out the live version of the project here:  
+👉 [CinePulse](https://netflixgpt-d305b.web.app)
 
 ## 🎬 About CinePulse
 CinePulse is an advanced streaming platform inspired by Netflix, integrating the power of GPT to enhance user experience. It provides seamless content discovery, personalized recommendations, and an engaging interface for movie enthusiasts.
